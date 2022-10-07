@@ -258,8 +258,8 @@ class ScanReport(dict):
                         log.warning("Alert: Misconfiguration found")
                         det = detection['detection']
                         title = det.get('Title')
-                        severity = vuln.get('Severity')
-                        remediation = vuln.get('Remediation')
+                        severity = det.get('Severity')
+                        remediation = det.get('Remediation')
 
                         log.warning(
                             "Misconfiguration found : Risk (%s) -  %s - Fix (%s)", severity, title, remediation)
