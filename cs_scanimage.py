@@ -195,6 +195,7 @@ class ScanReport(dict):
 
                 product = vuln.get('Product', {})
                 affects = product.get('PackageSource', product)
+                productName = product.get('PackageSource', product)
                 log.warning(
                     "%-8s %-16s Vulnerability detected affecting %s %s", severity, cve, affects, productName)
                 if severity.lower() == 'low':
