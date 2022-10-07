@@ -257,10 +257,11 @@ class ScanReport(dict):
                     if detection['Detection']['Type'].lower() in [self.type_misconfig, self.type_cis]:
                         log.warning("Alert: Misconfiguration found")
                         det = detection['detection']
+                        log.warning(det)
                         title = det.get('Title')
                         severity = det.get('Severity')
                         remediation = det.get('Remediation')
-
+                        
                         log.warning(
                             "Misconfiguration found : Risk (%s) -  %s - Fix (%s)", severity, title, remediation)
                         det_code = ScanStatusCode.Success.value
