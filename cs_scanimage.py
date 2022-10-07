@@ -195,7 +195,7 @@ class ScanReport(dict):
 
                 product = vuln.get('Product', {})
                 affects = product.get('PackageSource', product)
-                productName = product.get('PackageSource', product)
+                productName = product.get('Product', product)
                 log.warning(
                     "%-8s %-16s Vulnerability detected affecting %s %s", severity, cve, affects, productName)
                 if severity.lower() == 'low':
@@ -255,6 +255,7 @@ class ScanReport(dict):
             for detection in detections:
                 try:
                     if detection['Detection']['Type'].lower() in [self.type_misconfig, self.type_cis]:
+                        log.warning("Alert: Misconfiguration found")
                         det = detection['detection']
                         title = det.get('Title')
                         severity = vuln.get('Severity')
