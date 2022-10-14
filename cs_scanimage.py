@@ -255,15 +255,12 @@ class ScanReport(dict):
             for detection in detections:
                 try:
                     if detection['Detection']['Type'].lower() in [self.type_misconfig, self.type_cis]:
-                        log.warning("Alert: Misconfiguration found")
-                        det = detection['detection']
-                        log.warning(det)
+                        det = detection['Detection']
                         title = det.get('Title')
                         severity = det.get('Severity')
                         remediation = det.get('Remediation')
-                        
                         log.warning(
-                            "Misconfiguration found : Risk (%s) -  %s - Fix (%s)", severity, title, remediation)
+                            "Misconfiguration found : Risk (%s) -  %s - Fix - %s", severity, title, remediation)
                         det_code = ScanStatusCode.Success.value
                 except KeyError:
                     continue
